@@ -43,7 +43,7 @@ CryptNote ===
 
 - [x] Scope doc
 - [x] User flow doc in Draw.io
-- [] Wireframes
-- [] UI Designs
-- [] Setup a react native app, eject
+- [x] Wireframes
+- [ ] UI Designs
+- [ ] Setup a react native app, eject
 
