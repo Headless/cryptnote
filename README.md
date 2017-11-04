@@ -1,13 +1,14 @@
 CryptNote
 ===
 
-
-### Defined as: 
-
   _CryptNote is a simple note taking application, built on React Native, that has AES256 encryption built in. In its initial release, CryptNote wil not interface with any remote servers. Using the crypto libs in each native language, we'll encrypt the file before saving, which protects the user from data being collected_
 
 
 ---
+
+## Resources
+
+  * [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2125802)
 
 ### Application Requirements:
 
