@@ -1,0 +1,44 @@
+CryptNote
+===
+
+
+### Defined as: 
+
+  _CryptNote is a simple note taking application, built on React Native, that has AES256 encryption built in. In its initial release, CryptNote wil not interface with any remote servers. Using the crypto libs in each native language, we'll encrypt the file before saving, which protects the user from data being collected_
+
+
+---
+
+### Application Requirements:
+
+
+* Free on both stores
+* Open source
+* Android/iOS
+* Encryption is automatic  
+
+---
+
+### User stories:
+
+  * User should not have to sign up
+  * User should have to set a password
+  * Application should be available on android and ios
+  * User should be able to embed images in their notes
+  * User should be able to write in markdown
+  * User should be able to share notes
+    - share module on ios
+  * User should be able to lock the note screen
+    - 4 digit password
+    - Touch ID
+  * User should be able to embed links
+
+
+### TODO NOW:
+
+- Scope doc
+- User flow doc in Draw.io
+- Wireframes
+- UI Designs
+- Setup a react native app, eject
+
