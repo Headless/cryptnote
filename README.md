@@ -33,6 +33,7 @@ CryptNote
     - 4 digit password
     - Touch ID
   * User should be able to embed links
+  * User should be able to fuzzysearch their notes
 
 
 ### TODO NOW:
