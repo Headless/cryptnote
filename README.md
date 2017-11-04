@@ -38,6 +38,7 @@ CryptNote ===
     - Date of creation
     - Last updated date
   * User should be able to pin notes to the top
+  * User should be able to organize their notes via tags
 
 ### TODO NOW:
 
