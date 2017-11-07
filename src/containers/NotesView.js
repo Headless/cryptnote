@@ -1,32 +1,31 @@
 /********************************************************
- * NotesView 
+ * What is this component? What props does it take? 
  *
- * Container component for handling redux state for the
- * NotesView.
+ * @flow
  ********************************************************/
+import React, { PropTypes, Component } from 'react'
+import { View, Text, StyleSheet } from 'react-native'
 
-import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+// import custom components
+import TabBar from '../components/TabBar'
 
-NotesView.propTypes = {
-
-}
-
-export default function NotesView (props) {
-  return (
+export default class NotesView extends Component {
+  constructor(props) {
+    super(props)
+  }
+  static propTypes = {}
+  render () {
+    return (
     <View style={styles.container}>
-      <Text>
-       NotesView
-      </Text>
+      <Text>NotesView</Text>
     </View>
-  )
+    )
+  }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FF0000",
-    justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    justifyContent: "center"
   }
 })

@@ -18,7 +18,8 @@
 
  // register screens on our global navigation
  export function registerScreens () {
-   Navigation.registerComponent('cryptnote.NotesViewScreen', () => NotesView);
-   Navigation.registerComponent('cryptnote.NewNoteScreen', () => CreateNote);
+   Navigation.registerComponent('cryptnote.AppScreen', () => App);
+   Navigation.registerComponent('cryptnote.NotesScreen', () => NotesView);
+   Navigation.registerComponent('cryptnote.CreateNoteScreen', () => CreateNote);
    Navigation.registerComponent('cryptnote.PreferencesScreen', () => PreferencesView);
  }

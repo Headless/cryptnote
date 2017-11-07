@@ -5,21 +5,29 @@
  * CreateNote.
  ********************************************************/
 
-import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import React, { PropTypes, Component } from 'react'
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 
-CreateNote.propTypes = {
-
-}
-
-export default function CreateNote (props) {
+export default class CreateNote extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
   return (
     <View style={styles.container}>
+    <TouchableOpacity onPress={() =>{
+      this.props.navigator.dismissModal({
+        animationType: "slide-down"
+      })
+    }}> 
       <Text>
        CreateNote
       </Text>
+    </TouchableOpacity>
     </View>
   )
+    
+  }
 }
 
 const styles = StyleSheet.create({
