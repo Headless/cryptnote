@@ -13,6 +13,9 @@ import {
   View, 
 } from 'react-native'
 
+import Tab from './Tab'
+import TabCenter from './TabCenter'
+
 TabBar.propTypes = {
 
 }
@@ -20,40 +23,20 @@ TabBar.propTypes = {
 export default function TabBar (props) {
   return (
     <View style={styles.container}>
-        <View style={styles.tab}>
-        <TouchableOpacity onPress={() => {props.updateActiveTab(1);}}>
-          
-          <Image source={require('../assets/icon.png')} style={styles.tabIcon} />
-          </TouchableOpacity>
-         
-        </View>
-        <View style={styles.tab}>
-        <TouchableOpacity onPress={() => {
-          props.navigator.showModal({
-            screen: "cryptnote.CreateNoteScreen",
-            title: undefined,
-            passProps: {},
-            animated: true,
-            animationType: 'slide-up',
-            backButtonTitle: 'back',
-            backButtonHidden: false,
-            navigatorStyle: {
-              navBarHidden: true
-            },
-            navigatorButtons: {}
-          })
-        }}>
-          <Image source={require('../assets/icon.png')} style={styles.tabIcon} />
-          
-        </TouchableOpacity>
-         
-        </View>
-        <View style={styles.tab}>
-        <TouchableOpacity onPress={() => { props.updateActiveTab(2) }}>
-          
-          <Image source={require('../assets/icon.png')} style={styles.tabIcon} />
-          </TouchableOpacity>
-        </View>
+        <Tab 
+          navigator={props.navigator} 
+          updateActiveTab={props.updateActiveTab} 
+          title="Your Notes"
+          icon={{uri: "https://placehold.it/50x50&text=%20"}}
+          tabNum={1} />
+        <TabCenter 
+          navigator={props.navigator} />
+        <Tab 
+          navigator={props.navigator} 
+          updateActiveTab={props.updateActiveTab} 
+          title="Settings"
+          icon={{uri: "https://placehold.it/50x50&text=%20"}}
+          tabNum={2} />
     </View>
   )
 }
@@ -62,17 +45,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
-    height: 40,
-    backgroundColor: "#cccccc"
+    alignItems: "center",
+    height: 52,
+    backgroundColor: "#f7f7f7"
   },
-  tab: {
-    flex: .33,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  tabIcon: {
-    width: 30,
-    height: 30,
-  }
 })
 
