@@ -3,14 +3,23 @@
  *
  * @flow
  ********************************************************/
-import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
+import React, { PropTypes, Component } from 'react'
+import { 
+  View, 
+  StyleSheet, 
+  Picker,
+  Text, 
+  TouchableOpacity } from 'react-native'
 
-NotesHeader.propTypes = {
 
-}
-
-export default function NotesHeader (props) {
+export default class NotesHeader extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filter: "tags"
+    };
+  }
+  render() {
   return (
     <View style={styles.container}>
       <View style={styles.titleWrapper}>
@@ -18,13 +27,20 @@ export default function NotesHeader (props) {
           Notes
         </Text>
       </View>
+      <View style={styles.filterWrapper}>
+        <TouchableOpacity style={styles.filterButton} onPress={() => console.log("onPress")}>
+        <Text>Filter by</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.searchWrapper}>
         <TouchableOpacity onPress={() => console.log("onPress")}>
-          <Text>SB</Text>
+          <Text style={styles.searchButton}>SB</Text>
         </TouchableOpacity>
       </View>
     </View>
   )
+
+  }
 }
 
 const styles = StyleSheet.create({
@@ -43,13 +59,37 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   titleWrapper: {
-    flex: .8,
-    justifyContent: "flex-start"
+    flex: .4,
+    justifyContent: "flex-end",
   },
   searchWrapper: {
     flex: .2,
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center"
+  },
+  searchButton: {
+    backgroundColor: "#e9e9e9",
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingLeft: 12,
+    paddingRight: 12,
+    borderRadius: 4,
+  },
+  filterWrapper: {
+    flex: .4,
+    justifyContent: "flex-end",
+    alignItems: "flex-start"
+  },
+  filterHolder: {
+
+  },
+  filterButton: {
+    backgroundColor: "#e9e9e9",
+    paddingTop: 8,
+    paddingBottom: 8,
+    paddingLeft: 12,
+    paddingRight: 12,
+    borderRadius: 4,
   }
 })
 

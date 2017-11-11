@@ -26,10 +26,10 @@ export default class NotesRow extends Component {
   }
   render() {
     return (
-      <View style={styles.rowContainer}>
-      <View style={styles.noteRowMeta}> 
-        <Text>{this.props.note.id}d</Text>
-      </View>
+      <TouchableOpacity style={styles.rowContainer}>
+        <View style={styles.noteRowMeta}> 
+          <Text>{this.props.note.id}d</Text>
+        </View>
         <View style={styles.noteRowBody}>
           <Text style={styles.noteTitle}>{this.props.note.title}</Text>
           <View style={styles.excerptHolder}>
@@ -41,7 +41,8 @@ export default class NotesRow extends Component {
               : null }
           </View>
         </View>
-      </View>
+        
+      </TouchableOpacity>
     )
   }
 }
