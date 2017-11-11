@@ -8,27 +8,46 @@
  ********************************************************/
 
 import React, { PropTypes } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { ScrollView, View, Text, StyleSheet } from 'react-native'
+
+import PreferencesRow from '../components/PreferencesRow'
+import PreferencesHeader from '../components/PreferencesHeader'
 
 PreferencesView.propTypes = {
-
 }
 
 export default function PreferencesView (props) {
   return (
     <View style={styles.container}>
-      <Text>
-       PreferencesView
-      </Text>
+      <PreferencesHeader />
+      <ScrollView>
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+        <PreferencesRow />
+      </ScrollView>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#0000ff",
-    justifyContent: "center",
-    alignItems: "center",
+    paddingTop: 20,
+    paddingLeft: 16,
+    paddingRight: 16,
     flex: 1
   }
 })
