@@ -52,8 +52,8 @@ export default class NotesView extends Component {
     <View style={styles.container}>
       <NotesHeader readFiles={() => this.readFiles()} style={styles.headerContainer} />
     <ScrollView style={styles.scrollContainer}>
-    { this.state.notes.length > 0
-      ? this.state.notes.map(this._renderNoteRow)
+    { this.props.notes.length > 0
+      ? this.props.notes.map(this._renderNoteRow)
       : this._renderEmpty() }
     </ScrollView>
     </View>
