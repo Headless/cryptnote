@@ -18,15 +18,38 @@ export default class NotesRow extends Component {
   _renderTags  = (tag, i) => {
     return (
       <View style={styles.tagHolder} key={i}>
-        <TouchableOpacity onPress={() => null}>
+        <TouchableOpacity onPress={() => this._showNote() }>
           <Text style={styles.tag}>{tag}</Text>
         </TouchableOpacity>
       </View>
     )
   }
+
+  _showNote = (note) => {
+    this.props.navigator.push({
+      screen: 'cryptnote.RenderNoteScreen', 
+      title: undefined,
+      titleImage: undefined,
+      passProps: {
+        navigator: this.props.navigator,
+        note: note
+      }, 
+      animated: true,
+      animationType: 'slide-left', 
+      backButtonTitle: undefined, 
+      backButtonHidden: true,
+      navigatorStyle: {
+        navBarHidden: true
+      },
+      navigatorButtons: {}
+    })
+  }
+
   render() {
     return (
-      <TouchableOpacity style={styles.rowContainer}>
+      <TouchableOpacity 
+        onPress={() => this._showNote(this.props.note)}
+        style={styles.rowContainer}>
         <View style={styles.noteRowMeta}> 
           <Text>{this.props.note.id}d</Text>
         </View>

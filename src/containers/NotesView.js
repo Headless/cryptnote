@@ -17,7 +17,10 @@ export default class NotesView extends Component {
   static propTypes = {}
   _renderNoteRow = (note) => {
     return (
-      <NotesRow note={note} key={note.id}/>
+      <NotesRow 
+        note={note} 
+        navigator={this.props.navigator}
+        key={note.id}/>
     )
     
   }
