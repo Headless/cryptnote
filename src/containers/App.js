@@ -7,12 +7,20 @@
  * @flow
  ********************************************************/
 import React, { PropTypes, Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { 
+  View, 
+  AlertIOS,
+  Text, 
+  StyleSheet 
+} from 'react-native'
 
 // import our components
 import NotesView from './NotesView'
 import PreferencesView from './PreferencesView'
 import TabBar from '../components/TabBar'
+
+// import our db schema (stubbed)
+import { Notes } from '../db/notes.js'
 
 export default class App extends Component {
   constructor(props) {
@@ -23,13 +31,16 @@ export default class App extends Component {
   }
   static propTypes = {}
   _renderNotesScreen = () => {
-    return <NotesView navigator={this.props.navigator} />
+    return <NotesView navigator={this.props.navigator} notes={Notes} />
   }
   _renderPreferencesScreen = () => {
     return <PreferencesView navigator={this.props.navigator} />
   }
   updateActiveTab = (tabNum) => {
     this.setState({activeTab: tabNum});
+  }
+  _alertNotes = (note) => {
+    AlertIOS.alert(note.title);
   }
   render () {
     return (

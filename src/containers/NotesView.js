@@ -1,5 +1,5 @@
 /********************************************************
- * What is this component? What props does it take? 
+ * Notes Container component
  *
  * @flow
  ********************************************************/
@@ -15,29 +15,23 @@ export default class NotesView extends Component {
     super(props)
   }
   static propTypes = {}
+  _renderNoteRow = (note) => {
+    return (
+      <NotesRow note={note} key={note.id}/>
+    )
+    
+  }
+  _renderEmpty = () => {
+    return <Text>No Notes</Text>
+  }
   render () {
     return (
     <View style={styles.container}>
       <NotesHeader style={styles.headerContainer} />
     <ScrollView style={styles.scrollContainer}>
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
-      <NotesRow />
+    { this.props.notes.length > 0
+      ? this.props.notes.map(this._renderNoteRow)
+      : this._renderEmpty() }
     </ScrollView>
     </View>
     )
@@ -45,9 +39,6 @@ export default class NotesView extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 22,
-    paddingLeft: 16,
-    paddingRight: 16,
     justifyContent: "flex-end",
     flex: 1,
   },
