@@ -7,6 +7,7 @@ import React, { PropTypes, Component } from 'react'
 import { 
   View, 
   AlertIOS,
+  TouchableOpacity,
   TextInput,
   Text, 
   StyleSheet 
@@ -20,6 +21,9 @@ export default class CreateNoteHeader extends Component {
   _handleEndEditing = (text) => {
     console.log(text)
   }
+  _dismiss = () => {
+    this.props.navigator.dismissModal()
+  }
   render () {
     return (
       <View style={styles.container}>
@@ -31,6 +35,11 @@ export default class CreateNoteHeader extends Component {
             autoFocus={this.props.focused}
             placeholder="Enter Your Title"
             value={this.props.title}/>
+        </View>
+        <View style={styles.exitWrapper}>
+        <TouchableOpacity hitSlop={{top: 12, left: 10, right: 10, bottom: 10}} style={styles.exit} onPress={() => this._dismiss()}>
+           <Text style={styles.x}>X</Text>
+        </TouchableOpacity>
         </View>
       </View>
     )
@@ -49,11 +58,21 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   titleWrapper: {
-    flex: 1,
+    flex: .9,
     justifyContent: "flex-end",
   },
   titleInput: {
     fontSize: 26,
     marginTop: 8
+  },
+  exitWrapper: {
+    flex: .1
+  },
+  exitButton: {
+    padding: 8,
+    backgroundColor: "#ccc"
+  },
+  x: {
+    fontSize: 20
   }
 })

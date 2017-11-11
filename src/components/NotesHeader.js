@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   filterWrapper: {
     flex: .4,
     justifyContent: "flex-end",
-    alignItems: "flex-start"
+    alignItems: "flex-end"
   },
   filterHolder: {
 

@@ -76,6 +76,7 @@ export default class CreateNote extends Component {
         onLayout={(e) => this._handleViewHeight(e)}>
       <CreateNoteHeader 
         title={this.state.title}
+        navigator={this.props.navigator}
         focused={this.state.titleFocused}
         updateTitle={(title) => this.updateTitle(title)}/>
         <View style={styles.createNoteBodyWrapper}>
