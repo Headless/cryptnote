@@ -10,11 +10,17 @@ import { ScrollView, View, Text, StyleSheet } from 'react-native'
 import NotesHeader from '../components/NotesHeader'
 import NotesRow from '../components/NotesRow'
 
+// deps
+import RNFS from 'react-native-fs'
+
+
 export default class NotesView extends Component {
   constructor(props) {
     super(props)
+    this.state = {
+      notes: []
+    }
   }
-  static propTypes = {}
   _renderNoteRow = (note) => {
     return (
       <NotesRow 
@@ -27,13 +33,27 @@ export default class NotesView extends Component {
   _renderEmpty = () => {
     return <Text>No Notes</Text>
   }
+  readFiles = () => {
+    RNFS.readDir(RNFS.DocumentDirectoryPath) 
+    .then((files) => {
+      this.setState({notes: files})
+    })
+    .catch((err) => {
+      console.log(err.message, err.code);
+    });
+  }
+
+  componentDidMount() {
+    //this.readFiles()
+  }
+
   render () {
     return (
     <View style={styles.container}>
-      <NotesHeader style={styles.headerContainer} />
+      <NotesHeader readFiles={() => this.readFiles()} style={styles.headerContainer} />
     <ScrollView style={styles.scrollContainer}>
-    { this.props.notes.length > 0
-      ? this.props.notes.map(this._renderNoteRow)
+    { this.state.notes.length > 0
+      ? this.state.notes.map(this._renderNoteRow)
       : this._renderEmpty() }
     </ScrollView>
     </View>

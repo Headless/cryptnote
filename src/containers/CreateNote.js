@@ -7,12 +7,16 @@
 
 import React, { PropTypes, Component } from 'react'
 import { 
+  AlertIOS,
   ScrollView,
   View, 
   StyleSheet, 
   Text, 
   TouchableOpacity 
 } from 'react-native'
+
+// component deps
+import  RNFS from 'react-native-fs'
 
 // import custom components
 import CreateNoteHeader from '../components/CreateNoteHeader'
@@ -50,6 +54,42 @@ export default class CreateNote extends Component {
     })
   }
 
+  slugify = (text) => {
+    return text.toString()
+    .replace(/\s+/g, '-')           // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    .replace(/^-+/, '')             // Trim - from start of text
+    .replace(/-+$/, '');            // Trim - from end of text
+  }
+
+  
+  writeFile = () => {
+    let title = this.slugify(this.state.title)
+    let body = this.state.body
+    let path = RNFS.DocumentDirectoryPath + `/${title}.txt`;
+
+    RNFS.writeFile(path, body, 'utf8')
+    .then((success) => {
+      return Promise.all([RNFS.stat(result[0].path), result[0].path]);
+    })
+    .then((statResult) => {
+      if (statResult[0].isFile()) {
+        // if we have a file, read it
+        return RNFS.readFile(statResult[1], 'utf8');
+      }
+
+      return 'no file';
+    })
+  .then((contents) => {
+    // log the file contents
+    console.log(contents);
+  })
+    .catch((err) => {
+      console.log(err.message);
+    });
+  }
+
   removeTag = (tagId) => {
     let _tags = this.state.tags
     _tags.splice(tagId, 1)
@@ -78,6 +118,7 @@ export default class CreateNote extends Component {
         title={this.state.title}
         navigator={this.props.navigator}
         focused={this.state.titleFocused}
+        writeFile={() => this.writeFile()}
         updateTitle={(title) => this.updateTitle(title)}/>
         <View style={styles.createNoteBodyWrapper}>
           <CreateNoteTags

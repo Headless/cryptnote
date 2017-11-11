@@ -9,8 +9,8 @@ import {
   StyleSheet, 
   Picker,
   Text, 
-  TouchableOpacity } from 'react-native'
-
+  TouchableOpacity 
+} from 'react-native'
 
 export default class NotesHeader extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ export default class NotesHeader extends Component {
         </TouchableOpacity>
       </View>
       <View style={styles.searchWrapper}>
-        <TouchableOpacity onPress={() => console.log("onPress")}>
+        <TouchableOpacity onPress={() => this.props.readFiles()}>
           <Text style={styles.searchButton}>SB</Text>
         </TouchableOpacity>
       </View>

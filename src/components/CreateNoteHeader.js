@@ -22,6 +22,7 @@ export default class CreateNoteHeader extends Component {
     console.log(text)
   }
   _dismiss = () => {
+    this.props.writeFile()
     this.props.navigator.dismissModal()
   }
   render () {

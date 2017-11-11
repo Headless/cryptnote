@@ -58,11 +58,6 @@ export default class NotesRow extends Component {
           <View style={styles.excerptHolder}>
             <Text style={styles.text}>{this.props.note.excerpt}</Text>
           </View>
-          <View style={styles.tagsWrapper}>
-            { this.props.note.tags.length > 0
-              ? this.props.note.tags.map(this._renderTags)
-              : null }
-          </View>
         </View>
         
       </TouchableOpacity>
