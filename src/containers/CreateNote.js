@@ -7,6 +7,7 @@
 
 import React, { PropTypes, Component } from 'react'
 import { 
+  ScrollView,
   View, 
   StyleSheet, 
   Text, 
@@ -50,17 +51,29 @@ export default class CreateNote extends Component {
   }
 
   removeTag = (tagId) => {
-    console.log(tagId)
     let _tags = this.state.tags
     _tags.splice(tagId, 1)
     this.setState({
       tags: _tags,
     })
   }
+  _handleViewHeight = (e) => {
+    this.setState({
+      viewHeight: e.nativeEvent.layout.height - 160,
+      scrollHeight: e.nativeEvent.layout.height
+    })
+  }
+
+  _scrollToEnd = () => {
+    this.scrollView.scrollToEnd({animated: true})
+  }
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}
+        ref={ref => this.scrollView = ref}
+        onContentSizeChange={() => this._scrollToEnd() }       
+        onLayout={(e) => this._handleViewHeight(e)}>
       <CreateNoteHeader 
         title={this.state.title}
         focused={this.state.titleFocused}
@@ -74,9 +87,10 @@ export default class CreateNote extends Component {
             tagDraft={this.state.tagDraft}
             updateTagDraft={(tag) => this.updateTagDraft(tag)} />
           <CreateNoteBody
+            viewHeight={this.state.viewHeight}
             body={this.state.body}/>
         </View>
-      </View>
+      </ScrollView>
     )
   }
 }

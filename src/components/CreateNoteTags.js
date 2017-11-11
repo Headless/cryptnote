@@ -18,7 +18,6 @@ export default class CreateNoteTags extends Component {
     super(props)
   }
   _addTag = () => {
-    console.log(this.props.tagDraft)
     this.props.addTag(this.props.tagDraft)
   }
 
@@ -35,7 +34,7 @@ export default class CreateNoteTags extends Component {
   }
   _renderTags = (tag, i) => {
     return (
-      <View style={styles.tagButton}>
+      <View style={styles.tagButton} key={i}>
         <Text style={styles.tagText}>
           {tag}
         </Text>
